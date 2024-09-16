@@ -1,0 +1,10 @@
+## Interface: 110005
+## Title: Titan Panel [|cffd6266cGreatVaultBroker|r]
+## Notes: A simple broker addon to open the Great Vault.
+## Version: 1.0
+## Author: BloddDragon2580
+## IconTexture: Interface\AddOns\GreatVaultBroker\Media\Texture\logo
+
+embeds.xml
+
+GreatVaultBroker.lua
