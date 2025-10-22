@@ -1,7 +1,7 @@
 ## Interface: 120000
 ## Title: Titan Panel [|cffd6266cGreatVaultBroker|r]
 ## Notes: A simple broker addon to open the Great Vault.
-## Version: 6.3
+## Version: 6.4
 ## Author: BloddDragon2580
 ## IconTexture: Interface\AddOns\GreatVaultBroker\Media\Texture\logo
 
