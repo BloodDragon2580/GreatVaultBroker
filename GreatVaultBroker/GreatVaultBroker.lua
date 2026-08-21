@@ -51,32 +51,17 @@ local broker = LibStub("LibDataBroker-1.1"):NewDataObject(L["Great Vault"], {
     end,
     OnClick = function(_, button)
         if button == "LeftButton" then
-            -- Überprüfe, ob das Blizzard-Addon für die Great Vault geladen ist
+            -- Blizzard_WeeklyRewards bei Bedarf über die aktuelle AddOn-API laden.
             if not C_AddOns.IsAddOnLoaded("Blizzard_WeeklyRewards") then
-                UIParentLoadAddOn("Blizzard_WeeklyRewards")
-                DelayedOpenVault()
+                local loaded, reason = C_AddOns.LoadAddOn("Blizzard_WeeklyRewards")
+                if loaded then
+                    DelayedOpenVault()
+                else
+                    print(L["The Great Vault is not available right now."] .. (reason and (" (" .. reason .. ")") or ""))
+                end
             else
                 OpenGreatVault()
             end
         end
     end
 })
-
--- Event-Handler, um sicherzustellen, dass die Great Vault geladen ist
-local f = CreateFrame("Frame")
-f:RegisterEvent("ADDON_LOADED")
-f:SetScript("OnEvent", function(self, event, addon)
-    if addon == "Blizzard_WeeklyRewards" then
-        -- Das Blizzard-Addon für die Great Vault ist jetzt geladen
-        if WeeklyRewardsFrame then
-            WeeklyRewardsFrame:Show()
-        end
-    end
-end)
-
--- Überprüfen, ob das Addon bereits geladen ist, falls ja, öffne die Great Vault sofort
-if C_AddOns.IsAddOnLoaded("Blizzard_WeeklyRewards") then
-    if WeeklyRewardsFrame then
-        WeeklyRewardsFrame:Show()
-    end
-end
